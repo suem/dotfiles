@@ -7,4 +7,3 @@ pgrep nm-applet >> /dev/null || volumeicon &
 
 xrdb -merge ~/.Xresources
 
-xcape
