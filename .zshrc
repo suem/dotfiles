@@ -35,11 +35,14 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
+# press jj for esc
+bindkey -M viins 'jj' vi-cmd-mode
+
 
 # Customize to your needs...
 eval `dircolors ~/.dir_colors`
 alias o=exo-open
-alias e="emacs -nw"
+alias e="emacsclient -c -n"
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
