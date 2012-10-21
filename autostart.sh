@@ -1,5 +1,5 @@
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-pgrep nm-applet >> /dev/null || nm-applet &
+pgrep wicd-client >> /dev/null || wicd-client -t &
 pgrep nm-applet >> /dev/null || volumeicon &
 emacs -daemon >> /dev/null &
 # batti &
