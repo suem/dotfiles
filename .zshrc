@@ -28,8 +28,8 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git archlinux autojump vi-mode)
+# Example format: plugins=(rails svn git textmate ruby lighthouse)
+plugins=(git svn archlinux vi-mode autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,8 +41,9 @@ bindkey -M viins 'jj' vi-cmd-mode
 
 # Customize to your needs...
 eval `dircolors ~/.dir_colors`
-alias o=exo-open
+alias o=xdg-open
 alias e="emacsclient -c -n"
+#alias j="autojump"
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
@@ -51,5 +52,4 @@ set meta-flag on
 set input-meta on
 set convert-meta on
 set output-meta on
-
 
