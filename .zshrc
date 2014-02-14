@@ -29,27 +29,58 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails svn git textmate ruby lighthouse)
-plugins=(git svn archlinux vi-mode autojump)
+plugins=(git svn vi-mode autojump colored-man)
 
 source $ZSH/oh-my-zsh.sh
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 # press jj for esc
-bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -M viins 'jj' vi-cmd-mode
 
 
 # Customize to your needs...
-eval `dircolors ~/.dir_colors`
+eval `dircolors ~/.dircolors_solarized_dark`
 alias o=xdg-open
 alias e="emacsclient -c -n"
 #alias j="autojump"
-
+alias ai="sudo apt-get install"
+alias l="ls -lah"
+alias fucking="sudo"
+alias mlab="matlab -nodesktop"
+alias mlabdesktop="matlab -desktop"
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export VISUAL=vim
+export EDITOR=vim
 
 #emacs meta stuff
 set meta-flag on
 set input-meta on
 set convert-meta on
 set output-meta on
+
+
+function jo {
+    if [ -z $(autojump $@) ]; then
+        echo "autojump: directory '${@}' not found"
+        echo "Try \`autojump --help\` for more information."
+        false
+    else
+        case ${OSTYPE} in
+            linux-gnu)
+                xdg-open "$(autojump $@)"
+                ;;
+            darwin*)
+                open "$(autojump $@)"
+                ;;
+            cygwin)
+                cygstart "" $(cygpath -w -a $(pwd))
+                ;;
+            *)
+                echo "Unknown operating system." 1>&2
+                ;;
+        esac
+    fi
+}
 
